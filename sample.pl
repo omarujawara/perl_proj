@@ -2,30 +2,27 @@
  use feature "say";
  use warnings;
 
-my @numbers = qw /one two three four five six seven eight nine/;
 open(FILE_WRITE,">numbers.txt");
 open(FILE_READ,"<sample.txt");
  while(<FILE_READ>) {
-     my $line = $.;
-     $line = $line - 1;
-     s/$_/$numbers[$line]/;
-     say FILE_WRITE $_;
+   
+    my @arr = split //, $_; # split into array of characters
+                            # and iterate over them
+
+    for (@arr) {
+        if($_ eq "0") { print FILE_WRITE "0";}
+        elsif($_ eq "1") { print FILE_WRITE "1";}
+        elsif($_ eq "2") { print FILE_WRITE "2";}
+        elsif($_ eq "3") { print FILE_WRITE "3";}
+        elsif($_ eq "4") { print FILE_WRITE "4";}
+        elsif($_ eq "5") { print FILE_WRITE "5";}
+        elsif($_ eq "6") { print FILE_WRITE "6";}
+        elsif($_ eq "7") { print FILE_WRITE "7";}
+        elsif($_ eq "8") { print FILE_WRITE "8";}
+        elsif($_ eq "9") { print FILE_WRITE "9";}
+        else { print FILE_WRITE $_;}
+    }
+
  }
  close(FILE_READ);
  close(FILE_WRITE)
-
-
-# my %numbers = (
-#     '0' => 'zero', '1' => 'one', '2' => 'two', '3' => 'three', '4' => 'four',
-#     '5' => 'five', '6' => 'six', '7' => 'seven', '8' => 'eight', '9' => 'nine'
-# );
-# # open(FILE_WRITE,">>numbers.txt");
-# open(FILE_READ,"<sample.txt");
-#  while(<FILE_READ>) {
-#     #  s/$_/$numbers{$_}/;
-#      say $_;
-
-#     # print $numbers{"".$_.""};
-#  }
-#  close(FILE_READ);
-# #  close(FILE_WRITE)
