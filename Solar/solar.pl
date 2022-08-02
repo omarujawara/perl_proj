@@ -9,7 +9,7 @@
  my @negative_orbital_period;
  my @discovered_by_voyager2;
  my @convert_orbit_period_to_seconds;
- open(FH,"<solar.txt"); # read from solar file
+ open(FH,"<./Solar/solar.txt"); # read from solar file
  while(<FH>) {
     # the following statements  in the whileloop will push the output to
     # the corresponding array;
