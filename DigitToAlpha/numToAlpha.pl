@@ -10,8 +10,8 @@ my %digit_alpha_correspond = (
         "9" => "nine");
 
 
-open(FILE_WRITE,">","numbers.txt");
-open(FILE_READ,"<","sample.txt");
+open(FILE_WRITE,">","./DigitToAlpha/sample_output.txt");
+open(FILE_READ,"<","./DigitToAlpha/sample.txt");
  while(<FILE_READ>) {
    
     my @arr = split //, $_;

@@ -24,9 +24,9 @@ foreach my $word (sort { $a cmp $b} @records) {
 }
 close(FILE_WRITE);
 
-while (( my $key, my $value) = each(%words_freq))
-{
+# while (( my $key, my $value) = each(%words_freq))
+# {
       
-    # Printing(key, value) pair
-    print("$key => $value\n");
-}
+#     # Printing(key, value) pair
+#     print("$key => $value\n");
+# }
