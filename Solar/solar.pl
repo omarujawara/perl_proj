@@ -1,12 +1,12 @@
-  use utf8;
-  use strict;
- use feature "say";
- use warnings;
+use utf8;
+use strict;
+use feature "say";
+use warnings;
  
  # declared arrays to be used
  my @no_discoverer;
- my @omit_field2;
- my @negative_orbital_period;
+ my @omit_field2; 
+ my @negative_orbital_period; 
  my @discovered_by_voyager2;
  my @convert_orbit_period_to_seconds;
  open(FH,"<./solar.txt") or die $!; # read from solar file
@@ -23,8 +23,9 @@
  }
  close(FH);
 
+# pribt the results ...
 print "\n";
-say "*** Records that do not list  a discoverer in the eight field ****"; print "\n";
+say "*** Records that do not list  a discoverer in the eighth field ****"; print "\n";
 say @no_discoverer;print "\n";
 say "****************** Recoords ommiting second field ****************"; print "\n";
 say @omit_field2;print "\n";
@@ -57,7 +58,7 @@ sub negative_orbital_period { # Search through and list the records with negativ
     my $target_index = 4;
     my ($record) = @_;
     my @temp_record = split(/ /,$record); #split by whitespace and store in array
-    if($temp_record[$target_index]=~/^\-/) {
+    if($temp_record[$target_index]=~/^\-[\d]/) {
         return @temp_record;
     }
 }
@@ -73,12 +74,9 @@ sub convert_orbit_period_to_seconds { #A subroutine to convert orbit period days
     my $target_index = 4;
     my ($record) = @_;
     my @temp_record = split(/ /,$record);
-    if($temp_record[$target_index]!~m/(\?|\-)/) { # iterate over orbit periods but ignore ? and -
-        my $str = $temp_record[$target_index];
-        $str =~ s/^\s+|\s+$//g; #remove any trailing and/or leading whitespaces to be able to work with it numerically
-        $str *= 86400; # formula to convert days into seconds
-        $temp_record[$target_index] = $str; #change the day field into $str (seconds)
-
+    if($temp_record[$target_index]!~m/(\?|\-)/) { # if orbit periods not ignore ? or -
+        $temp_record[$target_index] =~ s/^\s+|\s+$//g; #remove any trailing and/or leading whitespaces to be able to work with it numerically
+        $temp_record[$target_index] *= 86400; # formula to convert days into seconds
     }
     return @temp_record;
 }
